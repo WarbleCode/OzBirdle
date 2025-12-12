@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birdle AU — Guess the Bird of the Day</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <h1>🕊️ Birdle AU</h1>
+    <div class="sub">Guess the bird of the day in 6 tries</div>
+    <nav class="actions">
+      <button id="helpBtn" aria-label="How to play">❔ Help</button>
+      <button id="statsBtn" aria-label="Statistics">📊 Stats</button>
+      <button id="shareBtn" aria-label="Share your result" disabled>🔗 Share</button>
+    </nav>
+  </header>
+
+  <main id="game" role="main" aria-live="polite">
+    <section class="input-row">
+      <label for="guessInput">Your guess</label>
+      <input id="guessInput" type="text" placeholder="Start typing a bird name…" list="birdList" autocomplete="off" />
+      <datalist id="birdList"></datalist>
+      <button id="guessBtn" class="primary">Guess</button>
+    </section>
+
+    <section id="statusRow" class="status-row" aria-live="polite"></section>
+
+    <section id="board" class="board" aria-label="Guesses and feedback"></section>
+
+    <section id="answerCard" class="answer-card hidden" aria-live="polite"></section>
+  </main>
+
+  <dialog id="helpDialog" aria-labelledby="helpTitle">
+    <h2 id="helpTitle">How to play</h2>
+    <ul>
+      <li>Type the common name of a bird and press <strong>Guess</strong>.</li>
+      <li>You have <strong>5</strong> guesses.</li>
+      <li>After each guess, you'll see hints across six categories:
+        <ol>
+          <li><strong>Family</strong></li>
+          <li><strong>Size</strong> (⬆️ bigger / ⬇️ smaller)</li>
+          <li><strong>Colours</strong></li>
+          <li><strong>Habitat</strong></li>
+          <li><strong>Region</strong></li>
+          <li><strong>Silhouette</strong></li>
+        </ol>
+        <span class="legend">
+          <span class="square green"></span> exact/strong match
+          <span class="square yellow"></span> partial/close match
+          <span class="square gray"></span> no meaningful match
+        </span>
+      </li>
+      <li>The puzzle resets daily (based on UTC date). Your progress is saved in your browser.</li>
+    </ul>
+    <button id="helpClose" class="primary">Close</button>
+  </dialog>
+
+  <dialog id="statsDialog" aria-labelledby="statsTitle">
+    <h2 id="statsTitle">Stats</h2>
+    <div id="statsContent"></div>
+    <button id="statsClose" class="primary">Close</button>
+  </dialog>
+
+  <footer class="footer">
+    <small>
+      Built for fun. Data is simplified and may not be fully accurate. Images (if shown) may be from Wikimedia Commons.
+    </small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
